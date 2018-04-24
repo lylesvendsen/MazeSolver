@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" >
+   <head>
+      <meta charset="UTF-8">
+      <title>Maze Solver</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+      <link rel="stylesheet" href="css/style.css">
+   </head>
+   <body>
+      <div id="app">
+         <form class="vue-form" @submit.prevent="submit">
+            <fieldset>
+               <legend>Maze Solver</legend>
+               <div>
+                  <label class="label" for="mazetext">Maze</label>
+                  <textarea class="maze" name="mazetext" id="mazetext" required="" 
+                     v-model="mazetext.text" 
+                     :maxlength="mazetext.maxlength"></textarea>
+                  <span class="counter">{{ mazetext.text.length }} / {{ mazetext.maxlength }}</span>
+               </div>
+               <div>
+                  <input type="submit" value="Solve Maze">
+               </div>
+            </fieldset>
+            <div class="solution" v-show="$data.submitted">
+               <h2>Maze Solution</h2>
+               <pre>Solved:{{ $data.mazetext.mazeData.solved }}</pre>
+               <pre>Steps:{{ $data.mazetext.mazeData.path.length-1}}</pre>
+               <div id="maze-draw"></div>
+               <pre><code>Path:{{ $data.mazetext.mazeData.path}}</code></pre>
+            </div>
+         </form>
+      </div>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.3/vue.min.js'></script>
+      <script  src="js/index.js"></script>
+   </body>
+</html>
